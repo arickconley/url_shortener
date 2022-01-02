@@ -1,32 +1,30 @@
 {% extends 'layouts/main.html' %} {% block content %}
-    <section class="flex flex-col items-center justify-center ">
-        <h1>Create a short link.</h1>
+    <section class="flex flex-col items-center justify-center bg-blue-400 py-12 px-8 rounded-lg shadow-xl">
+        <h1 class="font-black text-blue-900 text-6xl py-4 ">Shrtn it</h1>
 
-        <form action="" method="post" class="flex">
-            {% csrf_token %}
-            {% for field in form %}
-                <div class="mt-1 flex rounded-md shadow-sm">
-                    <label for="{{ field.auto_id }}"
-                           class="hidden">
-                        Link to shorten
-                    </label>
+        <form action="" method="post" class="w-full">
+            <fieldset class="flex">
+                {% csrf_token %}
+                {% for field in form %}
+                    <label for="{{ field.auto_id }}" class="hidden"> Link to shorten </label>
                     {{ field }}
-                </div>
-            {% endfor %}
-            <input class="bg-cyan-500" type="submit" value="Submit"/>
+                {% endfor %}
+                <input class="bg-blue-700 text-blue-100 px-6 rounded-r-lg" type="submit" value="SHRTN"/>
+            </fieldset>
         </form>
-
-        <ul>
-
-            <p>All links</p>
-            {% for link in all_links %}
-                <li>
-                    <a href="{{ uri }}/l/{{ link.guid }}" target="_blank"
-                       class="hover:text-blue-700">{{ link.guid }}</a>
-                    - {{ link.views }}
-                </li>
-            {% endfor %}
-        </ul>
-
     </section>
+
+    <ul class="w-full md:w-1/2 mx-auto py-6 px-4 bg-gray-100 shadow-lg rounded-lg mt-12">
+        <p class="font-semibold text-xl">All links</p>
+        {% for link in all_links %}
+            <li class="bg-white my-2 rounded-lg py-4 px-2 flex justify-between items-center">
+                <a href="{{ uri }}/l/{{ link.guid }}"
+                   target="_blank"
+                   class="text-blue-500 hover:text-blue-700">
+                    <span class="text-sm text-gray-400">a9y.co/l/</span>{{ link.guid }}
+                </a>
+                <p class="text-gray-700">{{ link.views }} <span class="text-gray-400">views</span></p>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock content %}

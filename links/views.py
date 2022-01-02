@@ -11,7 +11,7 @@ class UrlForm(forms.ModelForm):
         model = Link
         fields = ["url"]
         widgets = {"url": forms.URLInput(attrs={
-            "class": "focus:ring-indigo-500 focus:border-indigo-500 flex-1  w-full sm:text-sm border-gray-300",
+            "class": "flex-1 shadow-lg shadow-inner border-none text-blue-900 rounded-l-lg",
             "placeholder": "www.example.com"})}
 
 
