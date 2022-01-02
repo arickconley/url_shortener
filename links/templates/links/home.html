@@ -1,0 +1,32 @@
+{% extends 'layouts/main.html' %} {% block content %}
+    <section class="flex flex-col items-center justify-center ">
+        <h1>Create a short link.</h1>
+
+        <form action="" method="post" class="flex">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mt-1 flex rounded-md shadow-sm">
+                    <label for="{{ field.auto_id }}"
+                           class="hidden">
+                        Link to shorten
+                    </label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <input class="bg-cyan-500" type="submit" value="Submit"/>
+        </form>
+
+        <ul>
+
+            <p>All links</p>
+            {% for link in all_links %}
+                <li>
+                    <a href="{{ uri }}/l/{{ link.guid }}" target="_blank"
+                       class="hover:text-blue-700">{{ link.guid }}</a>
+                    - {{ link.views }}
+                </li>
+            {% endfor %}
+        </ul>
+
+    </section>
+{% endblock content %}
