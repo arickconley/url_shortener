@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['polar-caverns-63802.herokuapps.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['polar-caverns-63802.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
