@@ -5,13 +5,14 @@
             Shrtn it</h1>
 
         <form action="" method="post" class="w-full">
-            <fieldset class="flex text-xl">
+            <fieldset class="flex">
                 {% csrf_token %}
                 {% for field in form %}
                     <label for="{{ field.auto_id }}" class="hidden"> Link to shorten </label>
                     {{ field }}
                 {% endfor %}
-                <input class="bg-blue-700 text-blue-100 px-6 rounded-r-lg" type="submit" value="SHRTN"/>
+                <input class="bg-blue-700 text-blue-100 px-6 rounded-r-lg" type="submit"
+                       value="SHRTN" />
             </fieldset>
         </form>
     </section>
@@ -24,7 +25,8 @@
                    class="text-blue-500 hover:text-blue-700">
                     <span class="text-sm text-gray-400">a9y.co/l/</span>{{ link.guid }}
                 </a>
-                <p class="text-gray-700">{{ link.views }} <span class="text-gray-400">views</span></p>
+                <p class="text-gray-700">{{ link.views }} <span class="text-gray-400">views</span>
+                </p>
             </li>
         {% endfor %}
     </ul>

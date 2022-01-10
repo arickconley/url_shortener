@@ -1,45 +1,59 @@
 <header>
-    <nav class="flex justify-end p-6">
-
-        <div class="ml-3 relative" x-data="{ open: false }">
-            <div>
-                <button type="button"
-                        class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                        id="user-menu-button" aria-expanded="false" aria-haspopup="true"
-                        @click="open = true">
-                    <span class="sr-only">Open user menu</span>
-                    <img class="h-8 w-8 rounded-full"
-                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                         alt="">
-                </button>
-            </div>
-
-            <!--
-              Dropdown menu, show/hide based on menu state.
-
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
-            <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
-                 tabindex="-1" x-show="open" @click.away="open = false">
-                <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                   id="user-menu-item-0">Your Profile</a>
-
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                   id="user-menu-item-1">Settings</a>
-
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                   id="user-menu-item-2">Sign out</a>
-            </div>
+    <nav class="flex justify-between items-center py-3 px-8">
+        <div>
+            <a href="{% url 'home' %}">Home</a>
         </div>
+        {% if user.is_authenticated %}
+            <div class="ml-3 relative" x-data="{ open: false }">
+                <div>
+                    <button type="button"
+                            class="max-w-xs bg-gradient-to-t from-blue-600 to-cyan-500 rounded-full flex
+                            items-center justify-center text-sm focus:outline-none h-8 w-8 rounded-full text-white
+                            focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-800
+                            focus:ring-white"
+                            id="user-menu-button" aria-expanded="false" aria-haspopup="true"
+                            @click="open = true">
+                        <span class="sr-only">Open user menu</span>
+                        <span>
+                            {{ user.username|slice:':1'|upper }}
+                        </span>
+                    </button>
+                </div>
+
+                <!--
+                  Dropdown menu, show/hide based on menu state.
+
+                  Entering: "transition ease-out duration-100"
+                    From: "transform opacity-0 scale-95"
+                    To: "transform opacity-100 scale-100"
+                  Leaving: "transition ease-in duration-75"
+                    From: "transform opacity-100 scale-100"
+                    To: "transform opacity-0 scale-95"
+                -->
+                <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black
+                            ring-opacity-5 focus:outline-none"
+                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
+                     tabindex="-1" x-show="open" @click.away="open = false">
+                    <!-- Active: "bg-gray-100", Not Active: "" -->
+                    <a href="{% url 'user-links' %}" class="block px-4 py-2 text-sm text-gray-700"
+                       role="menuitem"
+                       tabindex="-1"
+                       id="user-menu-item-0">Your Profile</a>
+
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                       tabindex="-1"
+                       id="user-menu-item-1">Settings</a>
+
+                    <a href="{% url 'logout' %}" class="block px-4 py-2 text-sm text-gray-700"
+                       role="menuitem"
+                       tabindex="-1"
+                       id="user-menu-item-2">Sign out</a>
+                </div>
+            </div>
 
 
-    </nav>
-
+            </nav>
+        {% else %}
+            <a href="{% url 'login' %}" class="text-cyan-500 hover:text-blue-700">Login</a>
+        {% endif %}
 </header>

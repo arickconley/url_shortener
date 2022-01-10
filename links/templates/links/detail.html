@@ -1,0 +1,31 @@
+{% extends 'layouts/main.html' %} {% block content %}
+    <section
+            class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-cyan-500 py-12 px-8 rounded-lg shadow-xl">
+        <h1 class="font-black text-transparent bg-gradient-to-tr from-slate-300 to-gray-100 bg-clip-text text-7xl py-4 drop-shadow-md ">
+            <span class="text-5xl text-transparent bg-gradient-to-tr from-slate-400 to-slate-200 bg-clip-text">a9y.co/l/</span>{{ link.guid }}
+        </h1>
+    </section>
+
+    <article class="w-full md:w-1/2 mx-auto py-6 px-4 bg-gray-100 shadow-lg rounded-lg mt-12">
+        <h2 class="font-semibold text-xl">Details</h2>
+        <ul>
+            <li>
+                Goes to: <a href="{{ uri }}/l/{{ link.guid }}"
+                            target="_blank"
+                            class="text-cyan-600 hover:text-cyan-800 hover:underline">{{ link.url }}</a>
+            </li>
+            <li>
+                Views: {{ link.views }}
+            </li>
+            <li>
+                Created on: {{ link.created_on }}
+            </li>
+            <li>
+                Created by: {{ link.creator|default:'Anonymous' }}
+            </li>
+        </ul>
+
+        <p class="text-lg mt-4">{{ link.description|default:'No description provided...' }}</p>
+
+    </article>
+{% endblock content %}
