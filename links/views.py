@@ -22,7 +22,10 @@ def home_page(request):
         form.creator = request.user
         if form.is_valid():
             obj = form.save(commit=False)  # Return an object without saving to the DB
-            obj.creator = request.user  # Add an author field which will contain current user's id
+            obj.creator = request.user if request.user.is_authenticated else None  # Add an author field which
+            # will contain
+            # current
+            # user's id
             obj.save()  # Save the final "real form" to the DB
             return HttpResponseRedirect("/")
 
