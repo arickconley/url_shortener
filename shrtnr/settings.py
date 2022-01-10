@@ -15,13 +15,14 @@ from pathlib import Path
 
 import dj_database_url
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', "django-insecure-75h*_u-sd%ac*hanx(97=hn$cq%3jc69$w-$+f22nja@1)@gm%")
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
+                            "django-insecure-75h*_u-sd%ac*hanx(97=hn$cq%3jc69$w-$+f22nja@1)@gm%")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['polar-caverns-63802.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['ac-shrtnr.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
