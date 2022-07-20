@@ -1,6 +1,28 @@
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shrtnr</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% tailwind_css %}
+    <link rel="stylesheet" href="{% static "css/main.css" %}" />
+</head>
+
+<body class="bg-white leading-normal tracking-normal">
+<main class="container mx-auto flex items-center justify-center flex-col h-screen">
+    <h1 class="font-black text-transparent bg-gradient-to-tr from-cyan-500 to-indigo-500
+    bg-clip-text text-7xl py-4 drop-shadow">
+        Login</h1>
+    <form method="post" class="flex flex-col items-center justify-center">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="mt-4 px-6 py-3 bg-cyan-500 text-cyan-50 rounded-md
+        hover:text-white hover:bg-cyan-600">Login
+        </button>
+    </form>
+</main>
+<script src="{% static 'js/alpine.min.js' %}" defer></script>
+</body>
+</html>

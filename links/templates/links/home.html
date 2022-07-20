@@ -1,6 +1,8 @@
 {% extends 'layouts/main.html' %} {% block content %}
     <section
-            class="flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-cyan-500 py-12 px-8 rounded-lg shadow-xl">
+            class="max-w-1/2 flex flex-col items-center justify-center bg-gradient-to-br
+            from-blue-600
+            to-cyan-500 py-12 px-8 rounded-lg shadow-xl">
         <h1 class="font-black text-transparent bg-gradient-to-tr from-slate-300 to-gray-100 bg-clip-text text-7xl py-4 drop-shadow-md ">
             Shrtn it</h1>
 
@@ -11,20 +13,22 @@
                     <label for="{{ field.auto_id }}" class="hidden"> Link to shorten </label>
                     {{ field }}
                 {% endfor %}
-                <input class="bg-blue-700 text-blue-100 px-6 rounded-r-lg" type="submit" value="SHRTN"/>
+                <input class="bg-blue-700 text-blue-100 px-6 rounded-r-lg" type="submit"
+                       value="SHRTN" />
             </fieldset>
         </form>
     </section>
 
     <ul class="w-full md:w-1/2 mx-auto py-6 px-4 bg-gray-100 shadow-lg rounded-lg mt-12">
-        <p class="font-semibold text-xl">All links</p>
+        <p class="font-semibold text-xl">Recent links</p>
         {% for link in all_links %}
             <li class="bg-white my-2 rounded-lg py-4 px-2 flex justify-between items-center">
                 <a href="{{ uri }}/d/{{ link.guid }}"
                    class="text-blue-500 hover:text-blue-700">
                     <span class="text-sm text-gray-400">a9y.co/l/</span>{{ link.guid }}
                 </a>
-                <p class="text-gray-700">{{ link.views }} <span class="text-gray-400">views</span></p>
+                <p class="text-gray-700">{{ link.views }} <span class="text-gray-400">views</span>
+                </p>
             </li>
         {% endfor %}
     </ul>
